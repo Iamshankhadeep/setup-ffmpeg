@@ -1,7 +1,7 @@
-import { Octokit } from '@octokit/rest';
+import { Octokit } from "@octokit/rest";
 
-const owner = 'FedericoCarboni';
-const repo = 'setup-ffmpeg';
+const owner = "Iamshankhadeep";
+const repo = "setup-ffmpeg";
 
 /**
  * @typedef {object} FindOptions
@@ -16,7 +16,9 @@ const repo = 'setup-ffmpeg';
 export async function find(os, arch, options = {}) {
   const octokit = new Octokit({ auth: options.token });
   const response = await octokit.repos.listReleases({ owner, repo });
-  const release = response.data.find(({ tag_name }) => tag_name.startsWith('ffmpeg-'));
+  const release = response.data.find(({ tag_name }) =>
+    tag_name.startsWith("ffmpeg-")
+  );
   return {
     release,
     version: release.tag_name.slice(7, -9),
