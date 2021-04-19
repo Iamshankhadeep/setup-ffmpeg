@@ -17,7 +17,7 @@ export async function find(os, arch, options = {}) {
   const octokit = new Octokit({ auth: options.token });
   const response = await octokit.repos.listReleases({ owner, repo });
   const release = response.data.find(({ tag_name }) =>
-    tag_name.startsWith("ffmpeg-")
+    tag_name.startsWith("ffmpeg-4.1.4")
   );
   return {
     release,
