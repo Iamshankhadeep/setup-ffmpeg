@@ -1,5 +1,5 @@
-name: Setup FFmpeg
-description: Setup FFmpeg in GitHub Actions
+name: Setup FFmpeg v4.1.4
+description: Setup FFmpeg v4.1.4 in GitHub Actions
 
 inputs:
   token:
