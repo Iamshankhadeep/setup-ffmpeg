@@ -1,6 +1,6 @@
 # setup-ffmpeg
 
-Setup FFmpeg in GitHub Actions to use `ffmpeg` and `ffprobe`. The action will download, cache and
+Setup FFmpeg v4.1.4 in GitHub Actions primarily for remotion `ffmpeg` and `ffprobe`. The action will download, cache and
 add to `PATH` a recent FFmpeg build for the current os.
 
 # Usage
@@ -10,7 +10,7 @@ To use `ffmpeg` and `ffprobe`, run the action before them.
 ```yml
 steps:
   - uses: actions/checkout@v2
-  - uses: Iamshankhadeep/setup-ffmpeg@v1-beta
+  - uses: Iamshankhadeep/setup-ffmpeg@v1
     with:
       # Not strictly necessary, but it may prevent rate limit
       # errors especially on GitHub-hosted macos machines.
