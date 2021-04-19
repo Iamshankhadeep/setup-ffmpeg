@@ -44,7 +44,7 @@ async function main() {
     // If ffmpeg was not found in cache download it from releases
     if (!installPath) {
       const downloadPath = await tc.downloadTool(url, void 0, token);
-      const extractPath = await tc.extract7z(downloadPath);
+      const extractPath = await tc.extractZip(downloadPath);
       installPath = await tc.cacheDir(extractPath, "ffmpeg", version, arch);
     }
 
