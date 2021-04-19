@@ -3,7 +3,7 @@ name: Tests
 on:
   push:
     paths-ignore:
-      - '**.md'
+      - "**.md"
 
 jobs:
   test:
@@ -16,12 +16,12 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Run FedericoCarboni/setup-ffmpeg
+      - uses: actions/checkout@main
+      - name: Run Iamshankhadeep/setup-ffmpeg
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Run FedericoCarboni/setup-ffmpeg
+      - name: Run Iamshankhadeep/setup-ffmpeg
         id: setup-ffmpeg
         uses: ./
         with:
