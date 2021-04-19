@@ -9331,7 +9331,7 @@ async function find(os, arch, options = {}) {
   return {
     release,
     version: release.tag_name.slice(7, -9),
-    url: `https://github.com/${owner}/${repo}/releases/download/${release.tag_name}/ffmpeg-${os}-${arch}.tar.xz`,
+    url: `https://github.com/${owner}/${repo}/releases/download/${release.tag_name}/ffmpeg-${os}-${arch}.7z`,
   };
 }
 
@@ -9382,7 +9382,7 @@ async function main() {
     // If ffmpeg was not found in cache download it from releases
     if (!installPath) {
       const downloadPath = await tool_cache.downloadTool(url, void 0, token);
-      const extractPath = await tool_cache.extractTar(downloadPath);
+      const extractPath = await tool_cache.extract7z(downloadPath);
       installPath = await tool_cache.cacheDir(extractPath, "ffmpeg", version, arch);
     }
 

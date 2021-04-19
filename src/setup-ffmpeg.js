@@ -22,6 +22,6 @@ export async function find(os, arch, options = {}) {
   return {
     release,
     version: release.tag_name.slice(7, -9),
-    url: `https://github.com/${owner}/${repo}/releases/download/${release.tag_name}/ffmpeg-${os}-${arch}.tar.xz`,
+    url: `https://github.com/${owner}/${repo}/releases/download/${release.tag_name}/ffmpeg-${os}-${arch}.7z`,
   };
 }
