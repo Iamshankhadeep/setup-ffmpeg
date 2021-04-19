@@ -9396,9 +9396,11 @@ async function main() {
     await chmodx(ffmpegPath);
     await chmodx(ffprobePath);
 
+    console.log("ffmpeg path", ffmpegPath, "ffprobe path,", ffprobePath);
+
     // Execute ffmpeg -version and ffprobe -version to verify the installation
-    external_assert_.ok((await exec.exec(`${ffmpegPath} -version`)) === 0);
     external_assert_.ok((await exec.exec(`${ffprobePath} -version`)) === 0);
+    external_assert_.ok((await exec.exec(`${ffmpegPath} -version`)) === 0);
 
     core.addPath(installPath);
     core.setOutput("path", installPath);
