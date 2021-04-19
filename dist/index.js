@@ -9309,8 +9309,8 @@ var dist_node = __nccwpck_require__(5375);
 // CONCATENATED MODULE: ./src/setup-ffmpeg.js
 
 
-const owner = 'FedericoCarboni';
-const repo = 'setup-ffmpeg';
+const owner = "Iamshankhadeep";
+const repo = "setup-ffmpeg";
 
 /**
  * @typedef {object} FindOptions
@@ -9325,7 +9325,9 @@ const repo = 'setup-ffmpeg';
 async function find(os, arch, options = {}) {
   const octokit = new dist_node/* Octokit */.v({ auth: options.token });
   const response = await octokit.repos.listReleases({ owner, repo });
-  const release = response.data.find(({ tag_name }) => tag_name.startsWith('ffmpeg-'));
+  const release = response.data.find(({ tag_name }) =>
+    tag_name.startsWith("ffmpeg-4.1.4")
+  );
   return {
     release,
     version: release.tag_name.slice(7, -9),
@@ -9344,10 +9346,10 @@ async function find(os, arch, options = {}) {
 
 
 
-const PLATFORMS = new Set(['linux', 'win32', 'darwin']);
+const PLATFORMS = new Set(["linux", "win32", "darwin"]);
 
 // Sets the file as executable acts like chmod +x $path
-const chmodx = (path) => external_fs_.promises.chmod(path, '755');
+const chmodx = (path) => external_fs_.promises.chmod(path, "755");
 
 async function main() {
   try {
@@ -9355,27 +9357,38 @@ async function main() {
     const arch = external_os_.arch();
 
     // Check if the current platform and architecture are supported
-    external_assert_.ok(PLATFORMS.has(platform), `setup-ffmpeg cannot be run on ${platform}`);
-    external_assert_.strictEqual(arch, 'x64', 'setup-ffmpeg can only be run on 64-bit systems');
+    external_assert_.ok(
+      PLATFORMS.has(platform),
+      `setup-ffmpeg cannot be run on ${platform}`
+    );
+    external_assert_.strictEqual(
+      arch,
+      "x64",
+      "setup-ffmpeg can only be run on 64-bit systems"
+    );
 
-    const token = [process.env.INPUT_TOKEN, process.env.INPUT_GITHUB_TOKEN, process.env.GITHUB_TOKEN]
-      .filter((token) => token)[0];
+    const token = [
+      process.env.INPUT_TOKEN,
+      process.env.INPUT_GITHUB_TOKEN,
+      process.env.GITHUB_TOKEN,
+    ].filter((token) => token)[0];
 
     const { version, url } = await find(platform, arch, { token });
+    console.log(version, url, "hey hey hey0");
 
     // Search in the cache if version is already installed
-    let installPath = tool_cache.find('ffmpeg', version, arch);
+    let installPath = tool_cache.find("ffmpeg", version, arch);
 
     // If ffmpeg was not found in cache download it from releases
     if (!installPath) {
       const downloadPath = await tool_cache.downloadTool(url, void 0, token);
       const extractPath = await tool_cache.extractTar(downloadPath);
-      installPath = await tool_cache.cacheDir(extractPath, 'ffmpeg', version, arch);
+      installPath = await tool_cache.cacheDir(extractPath, "ffmpeg", version, arch);
     }
 
     external_assert_.ok(installPath);
 
-    const ext = platform === 'win32' ? '.exe' : '';
+    const ext = platform === "win32" ? ".exe" : "";
     const ffmpegPath = external_path_.join(installPath, `ffmpeg${ext}`);
     const ffprobePath = external_path_.join(installPath, `ffprobe${ext}`);
 
@@ -9384,13 +9397,13 @@ async function main() {
     await chmodx(ffprobePath);
 
     // Execute ffmpeg -version and ffprobe -version to verify the installation
-    external_assert_.ok(await exec.exec(ffmpegPath, ['-version']) === 0);
-    external_assert_.ok(await exec.exec(ffprobePath, ['-version']) === 0);
+    external_assert_.ok((await exec.exec(ffmpegPath, ["-version"])) === 0);
+    external_assert_.ok((await exec.exec(ffprobePath, ["-version"])) === 0);
 
     core.addPath(installPath);
-    core.setOutput('path', installPath);
-    core.setOutput('ffmpeg-path', ffmpegPath);
-    core.setOutput('ffprobe-path', ffprobePath);
+    core.setOutput("path", installPath);
+    core.setOutput("ffmpeg-path", ffmpegPath);
+    core.setOutput("ffprobe-path", ffprobePath);
   } catch (error) {
     core.setFailed(`${error.message}`);
   }
