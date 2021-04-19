@@ -9374,7 +9374,6 @@ async function main() {
     ].filter((token) => token)[0];
 
     const { version, url } = await find(platform, arch, { token });
-    console.log(version, url, "hey hey hey0");
 
     // Search in the cache if version is already installed
     let installPath = tool_cache.find("ffmpeg", version, arch);
@@ -9395,8 +9394,6 @@ async function main() {
     // Ensure the correct permission to execute ffmpeg and ffprobe
     await chmodx(ffmpegPath);
     await chmodx(ffprobePath);
-
-    console.log("ffmpeg path", ffmpegPath, "ffprobe path,", ffprobePath);
 
     // Execute ffmpeg -version and ffprobe -version to verify the installation
     external_assert_.ok((await exec.exec(`${ffprobePath} -version`)) === 0);
