@@ -39,7 +39,7 @@ create_archive() {
   echo "setup-ffmpeg: creating archive $1 from $2"
   curdir=$PWD
   cd $2
-  tar "$curdir/$1" *
+  zip "$curdir/$1" *
   cd $curdir
 }
 
