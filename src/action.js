@@ -35,7 +35,12 @@ async function main() {
       process.env.GITHUB_TOKEN,
     ].filter((token) => token)[0];
 
-    const { version, url } = await find(platform, arch, { token });
+    const ffmpegVersion = process.env.INPUT_VERSION;
+
+    const { version, url } = await find(platform, arch, {
+      token,
+      ffmpegVersion,
+    });
 
     // Search in the cache if version is already installed
     let installPath = tc.find("ffmpeg", version, arch);

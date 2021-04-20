@@ -9326,7 +9326,7 @@ async function find(os, arch, options = {}) {
   const octokit = new dist_node/* Octokit */.v({ auth: options.token });
   const response = await octokit.repos.listReleases({ owner, repo });
   const release = response.data.find(({ tag_name }) =>
-    tag_name.startsWith("ffmpeg-4.1.4")
+    tag_name.startsWith(`ffmpeg-${options.ffmpegVersion}`)
   );
   return {
     release,
@@ -9373,7 +9373,12 @@ async function main() {
       process.env.GITHUB_TOKEN,
     ].filter((token) => token)[0];
 
-    const { version, url } = await find(platform, arch, { token });
+    const ffmpegVersion = process.env.INPUT_VERSION;
+
+    const { version, url } = await find(platform, arch, {
+      token,
+      ffmpegVersion,
+    });
 
     // Search in the cache if version is already installed
     let installPath = tool_cache.find("ffmpeg", version, arch);
