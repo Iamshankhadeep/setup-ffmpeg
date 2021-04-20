@@ -27,11 +27,9 @@ jobs:
       - run: ffprobe -version
 
       - name: Run Iamshankhadeep/setup-ffmpeg
-        id: setup-ffmpeg
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          version: "4.4"
       - run: ffmpeg -version
       - run: ffprobe -version
 
@@ -40,5 +38,6 @@ jobs:
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          version: "4.4"
       - run: ffmpeg -version
       - run: ffprobe -version
