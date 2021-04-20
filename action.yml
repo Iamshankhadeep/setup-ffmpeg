@@ -4,6 +4,8 @@ description: Setup FFmpeg v4.1.4 in GitHub Actions
 inputs:
   token:
     required: false
+  version:
+    required: false
 
 runs:
   using: node12
