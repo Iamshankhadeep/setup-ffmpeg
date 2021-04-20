@@ -17,18 +17,18 @@ linux_url='https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static
 linux_temp_archive='/tmp/ffmpeg-release-amd64-static.tar.xz'
 linux_name='ffmpeg-linux-x64'
 linux_temp="/tmp/$linux_name"
-linux_archive="$linux_name.tar.gz"
+linux_archive="$linux_name.zip"
 
 win32_url='https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-full.7z'
 win32_temp_archive='/tmp/ffmpeg-release-full.7z'
 win32_name='ffmpeg-win32-x64'
 win32_temp="/tmp/$win32_name"
-win32_archive="$win32_name.tar.gz"
+win32_archive="$win32_name.zip"
 
 darwin_url='https://evermeet.cx/ffmpeg/getrelease'
 darwin_name='ffmpeg-darwin-x64'
 darwin_temp="/tmp/$darwin_name"
-darwin_archive="$darwin_name.tar.gz"
+darwin_archive="$darwin_name.zip"
 
 download() {
   echo "setup-ffmpeg: downloading $1 to $2"
@@ -39,7 +39,7 @@ create_archive() {
   echo "setup-ffmpeg: creating archive $1 from $2"
   curdir=$PWD
   cd $2
-  tar -czvf "$curdir/$1" *
+  zip "$curdir/$1" *
   cd $curdir
 }
 
