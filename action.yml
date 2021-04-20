@@ -6,6 +6,7 @@ inputs:
     required: false
   version:
     required: false
+    default: "4.1"
 
 runs:
   using: node12
