@@ -14,6 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
+        ffmpeg: [4.1, 4.4]
 
     steps:
       - uses: actions/checkout@v2
@@ -21,10 +22,13 @@ jobs:
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          version: ${{ matrix.ffmpeg }}
+
       - name: Run Iamshankhadeep/setup-ffmpeg
         id: setup-ffmpeg
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          version: ${{ matrix.ffmpeg }}
       - run: ffmpeg -version
       - run: ffprobe -version
