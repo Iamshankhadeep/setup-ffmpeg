@@ -1,6 +1,6 @@
 # setup-ffmpeg
 
-Setup FFmpeg v4.1.4 in GitHub Actions primarily for remotion `ffmpeg` and `ffprobe`. The action will download, cache and
+Setup FFmpeg using inputs from github actions (supports ffmpeg 4.1 and 4,4 currently) in GitHub Actions primarily for remotion `ffmpeg` and `ffprobe`. The action will download, cache and
 add to `PATH` a recent FFmpeg build for the current os.
 
 # Usage
@@ -15,6 +15,7 @@ steps:
       # Not strictly necessary, but it may prevent rate limit
       # errors especially on GitHub-hosted macos machines.
       token: ${{ secrets.GITHUB_TOKEN }}
+      version: "4.4"
     id: setup-ffmpeg
   - run: ffmpeg -i input.avi output.mkv
 ```

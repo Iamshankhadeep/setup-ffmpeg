@@ -1,12 +1,12 @@
-name: Setup FFmpeg v4.1.4
-description: Setup FFmpeg v4.1.4 in GitHub Actions
+name: Setup FFmpeg using versions
+description: Setup FFmpeg using version input from GitHub Actions
 
 inputs:
   token:
     required: false
   version:
     required: false
-    default: "4.1"
+    default: "4.4"
 
 runs:
   using: node12
