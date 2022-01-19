@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Check the versions that will be used
-linux_version=`curl -L https://johnvansickle.com/ffmpeg/release-readme.txt 2> /dev/null | grep "version: " | cut -d " " -f 16`
+# linux_version=`curl -L https://johnvansickle.com/ffmpeg/release-readme.txt 2> /dev/null | grep "version: " | cut -d " " -f 16`
+# https://johnvansickle.com/ffmpeg/release-readme.txt this one is still in 4.4.1 but the website has 5.0 ffmpeg support
+linux_version='5.0'
 win32_version=`curl -L https://www.gyan.dev/ffmpeg/builds/release-version 2> /dev/null | cut -d "-" -f 1`
 darwin_version=`curl -L https://evermeet.cx/ffmpeg/info/ffmpeg/release 2> /dev/null | cut -d "," -f 3 | cut -d "\"" -f 4`
 
