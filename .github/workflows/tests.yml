@@ -42,7 +42,6 @@ jobs:
       - run: ffprobe -version
 
       - name: Run Iamshankhadeep/setup-ffmpeg@1.1
-        id: setup-ffmpeg
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
