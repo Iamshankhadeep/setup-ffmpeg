@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Run Iamshankhadeep/setup-ffmpeg
+      - name: Run Iamshankhadeep/setup-ffmpeg@1.1
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -25,14 +25,14 @@ jobs:
       - run: ffmpeg -version
       - run: ffprobe -version
 
-      - name: Run Iamshankhadeep/setup-ffmpeg
+      - name: Run Iamshankhadeep/setup-ffmpeg@1.1
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: ffmpeg -version
       - run: ffprobe -version
 
-      - name: Run Iamshankhadeep/setup-ffmpeg
+      - name: Run Iamshankhadeep/setup-ffmpeg@1.1
         id: setup-ffmpeg
         uses: ./
         with:
