@@ -10,7 +10,7 @@ To use `ffmpeg` and `ffprobe`, run the action before them.
 ```yml
 steps:
   - uses: actions/checkout@v2
-  - uses: Iamshankhadeep/setup-ffmpeg@v1.1
+  - uses: Iamshankhadeep/setup-ffmpeg@v1.2
     with:
       # Not strictly necessary, but it may prevent rate limit
       # errors especially on GitHub-hosted macos machines.
